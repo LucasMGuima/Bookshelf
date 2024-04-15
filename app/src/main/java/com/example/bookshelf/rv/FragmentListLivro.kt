@@ -1,4 +1,4 @@
-package com.example.bookshelf
+package com.example.bookshelf.rv
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

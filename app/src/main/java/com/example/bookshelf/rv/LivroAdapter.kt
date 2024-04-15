@@ -1,4 +1,4 @@
-package com.example.bookshelf
+package com.example.bookshelf.rv
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -24,5 +24,6 @@ class LivroAdapter(
         val livro = livroList[position]
 
         holder.binding.textTituloLivro.text = livro.titulo
+        holder.binding.statuLivro.text = livro.estado
     }
 }

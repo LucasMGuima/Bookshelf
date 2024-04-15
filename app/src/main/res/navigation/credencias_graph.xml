@@ -40,7 +40,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentListLivro2"
-        android:name="com.example.bookshelf.FragmentListLivro"
+        android:name="com.example.bookshelf.rv.FragmentListLivro"
         android:label="fragment_list_livro"
         tools:layout="@layout/fragment_list_livro" />
 </navigation>
