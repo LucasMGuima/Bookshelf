@@ -31,6 +31,7 @@ class FragmentListLivro : Fragment() {
         binding.rvLivro.layoutManager = LinearLayoutManager(requireContext())
         binding.rvLivro.setHasFixedSize(true)
         binding.rvLivro.adapter = livroAdapter
+
     }
 
     override fun onDestroyView() {
