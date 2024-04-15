@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.bookshelf.R
 import com.example.bookshelf.databinding.FragmentListLivroBinding
 
 class FragmentListLivro : Fragment() {
@@ -32,6 +34,9 @@ class FragmentListLivro : Fragment() {
         binding.rvLivro.setHasFixedSize(true)
         binding.rvLivro.adapter = livroAdapter
 
+        binding.btnAdd.setOnClickListener(){
+            findNavController().navigate(R.id.action_fragmentListLivro2_to_novoLivroFragment)
+        }
     }
 
     override fun onDestroyView() {

@@ -42,5 +42,18 @@
         android:id="@+id/fragmentListLivro2"
         android:name="com.example.bookshelf.rv.FragmentListLivro"
         android:label="fragment_list_livro"
-        tools:layout="@layout/fragment_list_livro" />
+        tools:layout="@layout/fragment_list_livro" >
+        <action
+            android:id="@+id/action_fragmentListLivro2_to_novoLivroFragment"
+            app:destination="@id/novoLivroFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/novoLivroFragment"
+        android:name="com.example.bookshelf.NovoLivroFragment"
+        android:label="fragment_novo_livro"
+        tools:layout="@layout/fragment_novo_livro" >
+        <action
+            android:id="@+id/action_novoLivroFragment_to_fragmentListLivro2"
+            app:destination="@id/fragmentListLivro2" />
+    </fragment>
 </navigation>

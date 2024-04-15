@@ -7,11 +7,16 @@
     <string name="tv_confSenha">Confirmar Senha</string>
     <string name="tv_tituloLivro">Titulo do livro</string>
     <string name="tv_estadoLivro">Estado</string>
+    <string name="tv_descricaoLivro">Descrição do livro</string>
+    <string name="tv_lendo">Lendo</string>
+    <string name="tv_lido">Lido</string>
 
     <!-- Hint -->
     <string name="hint_email">seuemail@email.com</string>
     <string name="hint_senha">Senha</string>
     <string name="hint_confSenha">Confirmar Senha</string>
+    <string name="hint_tituloLivro">Titulo do Livro</string>
+    <string name="hint_descricao">Descrição do livro, ou notas</string>
 
     <!-- Button -->
     <string name="btn_login">Logar</string>
@@ -21,6 +26,8 @@
     <string name="btn_detalhes">Detalhes</string>
     <string name="btn_mudarEstado">Mudar estado</string>
     <string name="btn_excluir">Excluir</string>
+    <string name="btn_adicionar">Adicionar</string>
+    <string name="btn_voltar">Voltar</string>
 
     <!-- Descricoes -->
     <string name="desc_btnLogin">Botão de logar no aplicativo</string>
