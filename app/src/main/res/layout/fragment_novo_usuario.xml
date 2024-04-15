@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="32dp"
+    tools:context=".acesso.NovoUsuarioFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/input_label"
+        android:text="@string/tv_email"
+        />
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/inp_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:hint="@string/hint_email"
+        android:inputType="textEmailAddress"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/input_label"
+        android:layout_marginTop="8dp"
+        android:text="@string/tv_senha"
+        />
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/inp_senha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:hint="@string/hint_senha"
+        android:inputType="textPassword"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/input_label"
+        android:layout_marginTop="8dp"
+        android:text="@string/tv_confSenha"
+        />
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/inp_confSenha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:hint="@string/hint_confSenha"
+        android:inputType="textPassword"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_cadastrar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        style="@style/btn_confirma"
+        android:text="@string/btn_cadastrar"
+        android:contentDescription="@string/desc_btnCadastrar"
+        />
+
+</LinearLayout>

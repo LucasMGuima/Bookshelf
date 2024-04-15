@@ -1,0 +1,31 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Bookshelf" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/primaria</item>
+    </style>
+
+    <style name="btn_confirma" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:backgroundTint">@color/tercearia</item>
+        <item name="android:minWidth">48dp</item>
+        <item name="android:minHeight">48dp</item>
+    </style>
+
+    <style name="btn_text" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:minWidth">48dp</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:textColor">@color/primaria</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="input_label" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:textStyle">bold</item>
+        <item name="android:minWidth">48dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="Theme.Bookshelf" parent="Base.Theme.Bookshelf" />
+</resources>

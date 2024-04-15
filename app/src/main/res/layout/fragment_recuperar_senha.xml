@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="32dp"
+    tools:context=".acesso.RecuperarSenhaFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/input_label"
+        android:text="@string/tv_email"
+        />
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/inp_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_email"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_RecSenha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/btn_confirma"
+        android:text="@string/btn_recSenha"
+        android:contentDescription="@string/desc_btnRecSenha"
+        />
+
+</LinearLayout>

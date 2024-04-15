@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/credencias_graph"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.bookshelf.acesso.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_novoUsuarioFragment"
+            app:destination="@id/novoUsuarioFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_recuperarSenhaFragment"
+            app:destination="@id/recuperarSenhaFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_fragmentListLivro2"
+            app:destination="@id/fragmentListLivro2" />
+    </fragment>
+    <fragment
+        android:id="@+id/novoUsuarioFragment"
+        android:name="com.example.bookshelf.acesso.NovoUsuarioFragment"
+        android:label="fragment_novo_usuario"
+        tools:layout="@layout/fragment_novo_usuario" >
+        <action
+            android:id="@+id/action_novoUsuarioFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/recuperarSenhaFragment"
+        android:name="com.example.bookshelf.acesso.RecuperarSenhaFragment"
+        android:label="fragment_recuperar_senha"
+        tools:layout="@layout/fragment_recuperar_senha" >
+        <action
+            android:id="@+id/action_recuperarSenhaFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentListLivro2"
+        android:name="com.example.bookshelf.FragmentListLivro"
+        android:label="fragment_list_livro"
+        tools:layout="@layout/fragment_list_livro" />
+</navigation>
