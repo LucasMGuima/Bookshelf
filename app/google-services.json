@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "456989646740",
+    "firebase_url": "https://bookshelf-677be-default-rtdb.firebaseio.com",
+    "project_id": "bookshelf-677be",
+    "storage_bucket": "bookshelf-677be.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:456989646740:android:11e35e0bb7b851d679b981",
+        "android_client_info": {
+          "package_name": "com.example.bookshelf"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBaHKJIMVTm8Pppo2FfMnYW9jN7Otoy5Qo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
