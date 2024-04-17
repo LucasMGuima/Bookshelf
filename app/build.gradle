@@ -2,7 +2,13 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     id 'kotlin-parcelize'
+
+    //Firebase
     id 'com.google.gms.google-services'
+
+    //Dagger Hilt
+    id 'com.google.dagger.hilt.android'
+    id 'com.google.devtools.ksp'
 }
 
 android {
@@ -51,8 +57,19 @@ dependencies {
     androidTestImplementation libs.androidx.junit
     androidTestImplementation libs.androidx.espresso.core
 
+    //Firebase
     implementation platform('com.google.firebase:firebase-bom:32.8.1')
     implementation("com.google.firebase:firebase-database")
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-storage")
+
+    //Dagger Hilt
+    implementation "com.google.dagger:hilt-android:2.48.1"
+    ksp "com.google.dagger:hilt-compiler:2.48.1"
+
+    //Room
+    def room_version = "2.6.1"
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+    ksp "androidx.room:room-compiler:$room_version"
 }
