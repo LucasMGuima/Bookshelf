@@ -7,8 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.room.Database
 import com.example.bookshelf.R
 import com.example.bookshelf.databinding.FragmentListLivroBinding
+import com.google.firebase.database.DatabaseReference
 
 class FragmentListLivro : Fragment() {
     private var _binding: FragmentListLivroBinding? = null

@@ -35,7 +35,7 @@ class NovoLivroFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        addNovoLivro()
+        listeners()
     }
 
     private fun listeners(){
@@ -58,9 +58,9 @@ class NovoLivroFragment : Fragment() {
         }
 
         if(titulo.isNotEmpty() && descricao.isNotEmpty() && estado.isNotEmpty()){
-            val livro_id = database.push().key ?: return
+            val livroId = database.push().key ?: return
             val livro = Livro(titulo, estado, descricao)
-            database.child(livro_id).setValue(livro)
+            database.child(livroId).setValue(livro)
                 .addOnCompleteListener {
                     Toast.makeText(context, "Livro salvo com sucesso!", Toast.LENGTH_SHORT).show()
                 }
