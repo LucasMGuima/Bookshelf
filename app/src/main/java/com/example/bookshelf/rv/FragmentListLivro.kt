@@ -45,11 +45,11 @@ class FragmentListLivro : Fragment() {
     }
 
     private fun getLivros() = listOf(
-        Livro("0", "Mistborn","Lendo", "... ... ..."),
-        Livro("1", "Senhor dos Aneis","Lido", "... ... ..."),
-        Livro("2", "Locked in Time","Lido", "... ... ..."),
-        Livro("3", "The Bodysnatchers","Lendo", "... ... ..."),
-        Livro("4", "O Fim da Eternidade","Lido", "... ... ..."),
-        Livro("5", "A Maquina do Tempo","Lido", "... ... ...")
+        Livro("Mistborn","Lendo", "... ... ..."),
+        Livro("Senhor dos Aneis","Lido", "... ... ..."),
+        Livro("Locked in Time","Lido", "... ... ..."),
+        Livro("The Bodysnatchers","Lendo", "... ... ..."),
+        Livro("O Fim da Eternidade","Lido", "... ... ..."),
+        Livro("A Maquina do Tempo","Lido", "... ... ...")
     )
 }

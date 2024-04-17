@@ -40,6 +40,10 @@ class NovoUsuarioFragment : Fragment() {
 
             verifcacao(email, senha, confSenha)
         }
+
+        binding.btnVoltar.setOnClickListener(){
+            findNavController().navigate(R.id.action_novoUsuarioFragment_to_loginFragment)
+        }
     }
 
     private fun verifcacao(email: String, senha: String, confSenha: String){
