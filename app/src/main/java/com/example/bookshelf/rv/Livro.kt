@@ -8,5 +8,11 @@ data class Livro(
     val titulo: String,
     val estado: String,
     val descricao: String
-):Parcelable
+):Parcelable{
+    constructor() : this(
+        "",
+        "",
+        ""
+    )
+}
 
