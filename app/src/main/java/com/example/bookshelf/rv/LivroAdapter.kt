@@ -3,27 +3,60 @@ package com.example.bookshelf.rv
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import com.example.bookshelf.databinding.ItemLivroBinding
 
-class LivroAdapter(
-    private val livroList: List<Livro>
-):RecyclerView.Adapter<LivroAdapter.MyViewHolder>() {
-    inner class MyViewHolder(val binding: ItemLivroBinding): RecyclerView.ViewHolder(binding.root){}
+// Criar variaveis para cada botão, cada variavel armazena uma instancia do objeto
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        return MyViewHolder(ItemLivroBinding.inflate(
+class LivroAdapter(
+    private val onDetalhes: (Livro) -> Unit,
+    private val onMudarEstado: (Livro) -> Unit,
+    private val onExluir: (Livro) -> Unit
+): ListAdapter<Livro, LivroAdapter.LivroViewHolder>(LivroDiffCallback()) {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LivroViewHolder {
+        val binding =ItemLivroBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
-        ))
+        )
+
+        return LivroViewHolder(binding, onDetalhes, onMudarEstado, onExluir)
     }
 
-    override fun getItemCount() = livroList.size
+    override fun onBindViewHolder(holder: LivroViewHolder, position: Int) {
+        val livro = getItem(position)
 
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val livro = livroList[position]
+        holder.bind(livro)
+    }
 
-        holder.binding.textTituloLivro.text = livro.titulo
-        holder.binding.statuLivro.text = livro.estado
+    class LivroViewHolder(
+        private val binding: ItemLivroBinding,
+        private val onDetalhes: (Livro) -> Unit,
+        private val onMudarEstado: (Livro) -> Unit,
+        private val onExluir: (Livro) -> Unit
+    ) : RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(livro: Livro) {
+            binding.apply {
+                textTituloLivro.text = livro.titulo
+                statuLivro.text = livro.estado
+
+                btnDetalhes.setOnClickListener { onDetalhes(livro) }
+                btnExcluir.setOnClickListener { onExluir(livro) }
+                btnMudarEstado.setOnClickListener { onMudarEstado(livro) }
+            }
+        }
+    }
+}
+
+class LivroDiffCallback : DiffUtil.ItemCallback<Livro>() {
+    override fun areItemsTheSame(oldItem: Livro, newItem: Livro): Boolean {
+        return oldItem.id == newItem.id
+    }
+
+    override fun areContentsTheSame(oldItem: Livro, newItem: Livro): Boolean {
+        return oldItem == newItem
     }
 }

@@ -21,6 +21,8 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.snapshots
 
+// Filtrar o retorno do bostões do fragment
+
 class FragmentListLivro : Fragment() {
     private var _binding: FragmentListLivroBinding? = null
     private val binding get() = _binding!!
@@ -43,7 +45,10 @@ class FragmentListLivro : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         getLivros()
-        livroAdapter = LivroAdapter(livroList)
+        livroAdapter = LivroAdapter(livroList
+                onDetalhes = {
+
+        })
 
         binding.rvLivro.layoutManager = LinearLayoutManager(requireContext())
         binding.rvLivro.setHasFixedSize(true)
