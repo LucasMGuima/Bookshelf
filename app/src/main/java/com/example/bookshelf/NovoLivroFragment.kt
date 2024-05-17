@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.bookshelf.databinding.FragmentNovoLivroBinding
-import com.example.bookshelf.rv.Livro
+import com.example.bookshelf.model.Livro
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
@@ -57,7 +57,7 @@ class NovoLivroFragment : Fragment() {
 
         if(titulo.isNotEmpty() && descricao.isNotEmpty() && estado.isNotEmpty()){
             val livroId = database.push().key ?: return
-            val livro = Livro(titulo, estado, descricao)
+            val livro = Livro(id, titulo, estado, descricao)
             database.child(livroId).setValue(livro)
                 .addOnCompleteListener {
                     Toast.makeText(context, "Livro salvo com sucesso!", Toast.LENGTH_SHORT).show()

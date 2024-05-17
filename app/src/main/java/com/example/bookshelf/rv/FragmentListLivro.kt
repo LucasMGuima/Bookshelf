@@ -14,6 +14,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Database
 import com.example.bookshelf.R
 import com.example.bookshelf.databinding.FragmentListLivroBinding
+import com.example.bookshelf.model.AppDatabase
+import com.example.bookshelf.view.LivroRepository
+import com.example.bookshelf.view.LivroViewModel
+import com.example.bookshelf.view.LivroViewModelFactory
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -26,61 +31,57 @@ import com.google.firebase.database.snapshots
 class FragmentListLivro : Fragment() {
     private var _binding: FragmentListLivroBinding? = null
     private val binding get() = _binding!!
-
-    private lateinit var livroAdapter: LivroAdapter
-    private lateinit var database: DatabaseReference
-    private val livroList = mutableListOf<Livro>()
+    private lateinit var livroViewModel: LivroViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        database = FirebaseDatabase.getInstance().getReference("bookshelf")
+    ): View {
         _binding = FragmentListLivroBinding.inflate(inflater,container,false)
+        val dao = AppDatabase.getDatabase(requireContext()).livroDao()
+        val repository = LivroRepository(dao)
+        val factory = LivroViewModelFactory(repository)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        getLivros()
-        livroAdapter = LivroAdapter(livroList
-                onDetalhes = {
+        val adapter = LivroAdapter(
+            onDetalhes = { livro ->
+                findNavController().navigate(R.id.action_fragmentListLivro2_to_detalhesLivroFragment)
+            },
+            onExluir = { livro ->
+                Snackbar.make(binding.root, "Gostaria de Remover o Livro?", Snackbar.LENGTH_LONG)
+                    .setAction("Confirmar") {
+                        livroViewModel.deletar(livro)
+                    }
+                    .show()
+            },
+            onMudarEstado = {livro ->
+                Snackbar.make(binding.root, "Mudar estado do livro", Snackbar.LENGTH_LONG)
+                    .setAction("Confirmar") {}
+                    .show()
+            }
+        )
 
-        })
-
-        binding.rvLivro.layoutManager = LinearLayoutManager(requireContext())
-        binding.rvLivro.setHasFixedSize(true)
-        binding.rvLivro.adapter = livroAdapter
+        binding.rvLivro.apply {
+            this.adapter = adapter
+            layoutManager = LinearLayoutManager(context)
+        }
 
         binding.btnAdd.setOnClickListener(){
             findNavController().navigate(R.id.action_fragmentListLivro2_to_novoLivroFragment)
+        }
+
+        livroViewModel.todosLivros.observe(viewLifecycleOwner) { livros ->
+            adapter.submitList(livros)
         }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    private fun getLivros(){
-        database.orderByKey().addValueEventListener(object : ValueEventListener{
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    livroList.clear()
-                    for(livroSnapshot in snapshot.children){
-                        val livro = livroSnapshot.getValue(Livro::class.java)
-                        if (livro != null) {
-                            livroList.add(livro)
-                        }
-                    }
-                    livroAdapter.notifyDataSetChanged()
-                }
-
-                override fun onCancelled(error: DatabaseError) {
-                    Toast.makeText(context, "Erro ao carregar os dados", Toast.LENGTH_LONG).show()
-                }
-            }
-        )
     }
 }

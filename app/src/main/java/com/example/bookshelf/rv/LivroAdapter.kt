@@ -1,6 +1,7 @@
 package com.example.bookshelf.rv
 
 import android.view.LayoutInflater
+import com.example.bookshelf.model.Livro
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.navigation.fragment.findNavController
