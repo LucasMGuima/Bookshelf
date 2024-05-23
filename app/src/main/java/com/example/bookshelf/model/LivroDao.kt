@@ -14,6 +14,6 @@ interface LivroDao {
     @Delete
     suspend fun deletarLivro(livro: Livro)
 
-    @Query("SELECT * FROM bookshelf")
+    @Query("SELECT * FROM Livro")
     fun todosLivros(): LiveData<List<Livro>>
 }

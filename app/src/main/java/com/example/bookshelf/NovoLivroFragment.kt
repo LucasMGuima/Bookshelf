@@ -8,9 +8,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.bookshelf.databinding.FragmentNovoLivroBinding
+import com.example.bookshelf.model.AppDatabase
 import com.example.bookshelf.model.Livro
+import com.example.bookshelf.view.LivroRepository
+import com.example.bookshelf.view.LivroViewModel
+import com.example.bookshelf.view.LivroViewModelFactory
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
@@ -18,14 +23,17 @@ import com.google.firebase.database.FirebaseDatabase
 class NovoLivroFragment : Fragment() {
     private var _binding: FragmentNovoLivroBinding? = null
     private val binding get() = _binding!!
-    private lateinit var database: DatabaseReference
+    private lateinit var livroViewModel: LivroViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        database = FirebaseDatabase.getInstance().getReference("bookshelf")
+        val dao = AppDatabase.getDatabase(requireContext()).livroDao()
+        val repository = LivroRepository(dao)
+        val factory = LivroViewModelFactory(repository)
+        livroViewModel = ViewModelProvider(this, factory).get(LivroViewModel::class.java)
         _binding = FragmentNovoLivroBinding.inflate(inflater, container, false)
         return binding.root
     }

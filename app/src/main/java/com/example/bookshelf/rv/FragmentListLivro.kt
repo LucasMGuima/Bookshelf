@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Database
@@ -42,6 +43,7 @@ class FragmentListLivro : Fragment() {
         val dao = AppDatabase.getDatabase(requireContext()).livroDao()
         val repository = LivroRepository(dao)
         val factory = LivroViewModelFactory(repository)
+        livroViewModel = ViewModelProvider(this, factory)[LivroViewModel::class.java]
         return binding.root
     }
 
