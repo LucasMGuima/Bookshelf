@@ -52,7 +52,8 @@ class FragmentListLivro : Fragment() {
 
         val adapter = LivroAdapter(
             onDetalhes = { livro ->
-                findNavController().navigate(R.id.action_fragmentListLivro2_to_detalhesLivroFragment)
+                val action = FragmentListLivroDirections.actionFragmentListLivro2ToDetalhesLivroFragment(livro)
+                findNavController().navigate(action)
             },
             onExluir = { livro ->
                 Snackbar.make(binding.root, "Gostaria de Remover o Livro?", Snackbar.LENGTH_LONG)

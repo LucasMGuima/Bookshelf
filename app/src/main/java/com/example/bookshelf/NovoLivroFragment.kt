@@ -64,15 +64,13 @@ class NovoLivroFragment : Fragment() {
         }
 
         if(titulo.isNotEmpty() && descricao.isNotEmpty() && estado.isNotEmpty()){
-            val livroId = database.push().key ?: return
             val livro = Livro(id, titulo, estado, descricao)
-            database.child(livroId).setValue(livro)
-                .addOnCompleteListener {
-                    Toast.makeText(context, "Livro salvo com sucesso!", Toast.LENGTH_SHORT).show()
-                }
-                .addOnFailureListener(){
-                    Toast.makeText(context, "Falha ao salvar o livro.", Toast.LENGTH_SHORT).show()
-                }
+            val completed = livroViewModel.inserir(livro).isCompleted
+            if (completed) {
+                Toast.makeText(context, "Livro salvo com sucesso!", Toast.LENGTH_SHORT).show()
+            }else{
+                Toast.makeText(context, "Falha ao salvar o livro.", Toast.LENGTH_SHORT).show()
+            }
         }else{
             Toast.makeText(context, "Preencha todos os campos.", Toast.LENGTH_SHORT).show()
         }
