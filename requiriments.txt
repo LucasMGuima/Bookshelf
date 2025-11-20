@@ -28,6 +28,7 @@ StrEnum==0.4.15
 supabase==2.24.0
 supabase-auth==2.24.0
 supabase-functions==2.24.0
+tk==0.1.0
 typing-inspection==0.4.2
 typing_extensions==4.15.0
 websockets==15.0.1
